@@ -21,12 +21,9 @@ public class BankingAppAssignment2{
         final String ERROR_MSG = String.format("  %s%s%s\n", COLOR_RED_BOLD, "%s", RESET);
         final String SUCCESS_MSG = String.format("  %s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
     
-        
-        int[] idVal = new int[0];
+      
         int id=0;
-        int[] balance = new int[0];
         int inDepo=0;
-        String[] customer = new String[0];
 
         String[][] details = new String[0][3];
         
@@ -74,9 +71,9 @@ public class BankingAppAssignment2{
                     String name;
                     boolean valid= true;
 
-                    validationA:
+                    //validationA:
                     do{
-                        System.out.printf("%-22s: SDB-%05d \n","New Account ID",(customer.length + 1));
+                        System.out.printf("%-22s: SDB-%05d \n","New Account ID",(details.length + 1));
                         System.out.printf("%-22s: ","Account Holder Name");
                         name = scanner.nextLine().strip();
                         if(name.isBlank()){
@@ -101,26 +98,14 @@ public class BankingAppAssignment2{
 
                     }while(!valid);
 
-                    // int[] newId = new int[idVal.length + 1];
-                    // String[] newCustomer = new String[customer.length + 1];
-                    // int[] newBalance = new int[balance.length + 1 ];
                     String[][] newDetails = new String[details.length + 1][3];
                     for (int i = 0; i < details.length; i++) {
-                        // newId[i] = idVal[i];
-                        // newCustomer[i] = customer[i];
-                        // newBalance[i] = balance[i];
 
                         newDetails[i][0]=details[i][0];
                         newDetails[i][1]=details[i][1];
                         newDetails[i][2]=details[i][2];
 
                     }
-                    // newId[newId.length - 1] = ++id;
-                    // newCustomer[newCustomer.length - 1] = name;
-                    // newBalance[newBalance.length -1] = inDepo;
-                    // customer = newCustomer;
-                    // idVal = newId;
-                    // balance= newBalance;
                     newDetails[newDetails.length-1][0] = ++id +"";
                     newDetails[newDetails.length-1][1] = name;
                     newDetails[newDetails.length-1][2] = inDepo + "";
@@ -131,13 +116,7 @@ public class BankingAppAssignment2{
                     System.out.print("Do you want to continue adding (Y/n)? ");
                     if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
                     screen = DASHBOARD;
-                    break;
-                
-                
-
-                    
-
-                    
+                    break;   
 
             }
 
