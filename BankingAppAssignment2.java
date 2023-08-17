@@ -124,6 +124,7 @@ public class BankingAppAssignment2{
                     newDetails[newDetails.length-1][0] = ++id +"";
                     newDetails[newDetails.length-1][0] = name;
                     newDetails[newDetails.length-1][0] = inDepo + "";
+                    details = newDetails;
 
                     System.out.println();
                     System.out.printf(SUCCESS_MSG,String.format("SDB-%05d:%s Account has been created successfully", idVal[idVal.length-1], customer[customer.length-1]));
@@ -132,72 +133,7 @@ public class BankingAppAssignment2{
                     screen = DASHBOARD;
                     break;
                 
-                case MONEY_DIPOSIT :
-
-                    String accNo;
-                    boolean check= true;
-                    boolean check2= false;
-                    int accNumDigit;
-                    int accIndex=0;
-                    String collect="";
-                    valid = true;
-
-                    validationB:
-                    do{
-                        System.out.printf("%-22s: ","Enter account number");
-                        accNo = scanner.nextLine().strip();
-                        if(accNo.isBlank()){
-                            System.out.printf(ERROR_MSG,"Account number cannot be empty..\n");
-                            valid = false;
-                            continue;
-                        }
-                        else if(!accNo.startsWith("SDB-") || accNo.length()!=9){
-                            System.out.printf(ERROR_MSG,"Entered account number is Invalid \n");
-                            valid = false;
-                            continue;
-                        }
-                        else{
-                            for(int i=4; i<accNo.length(); i++){
-                                if(!Character.isDigit(accNo.charAt(i))){
-                                System.out.printf(ERROR_MSG,"Entered account number is Invalid ");
-                                valid =false;
-                                continue validationB;
-                                }
-                                if(check && accNo.charAt(i)> '0')check = false;
-                                if(!check){
-                                    collect = collect+accNo.charAt(i);
-                                }
-                            }
-                            accNumDigit= Integer.valueOf(collect);
-                            System.out.println(accNumDigit);   
-                        }
-                        if(idVal.length==0){
-                            check2=true;
-                            valid = false;
-                            System.out.printf(ERROR_MSG,"Entered account number is not found ");
-                        }
-                        else if(!check2){
-                            for (int i = 0; i < idVal.length; i++) {
-                                if(idVal[i]==accNumDigit){
-                                    accIndex=i;
-                                    
-                                    valid = false;
-                                    break;
-                                }
-                            }
-                            System.out.println(accIndex);
-                        }
-                        else {
-                            System.out.printf(ERROR_MSG,"Entered account number is not found ");
-                            break;
-                        }
-                        
-                    }while(valid);
-
-                    System.out.printf("Current account balance is : Rs. %,d.00",balance[accIndex]);
-
-                    // screen = DASHBOARD;
-                    // break;
+                
 
                     
 
